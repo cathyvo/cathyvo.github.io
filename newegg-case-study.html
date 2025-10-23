@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newegg.com Usability Redesign - Case Study</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Fix nav bar visibility on case study page without changing appearance */
+        .nav-bar {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* New sections styling */
+        .prototype-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .prototype-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .prototype-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Demographics Grid */
+        .demographics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .chart-container {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .chart-container h3 {
+            margin-bottom: 1rem;
+            color: #1e293b;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .chart-container canvas {
+            max-height: 250px !important;
+        }
+
+        /* Task Descriptions */
+        .task-descriptions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .task-description {
+            padding: 0;
+        }
+
+        .task-description h3 {
+            margin-bottom: 1rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .task-description p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Performance Grid */
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* New Design Improvements */
+        .improvements-grid-new {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .improvement-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f1f5f9;
+            transition: all 0.3s ease;
+        }
+
+        .improvement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .improvement-header-new {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #f8fafc;
+        }
+
+        .improvement-icon-new {
+            font-size: 2.5rem;
+            margin-right: 1.5rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .improvement-info h3 {
+            margin: 0 0 0.5rem 0;
+            color: #1e293b;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .violation-tag {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .improvement-visual-new {
+            margin: 1.5rem 0;
+        }
+
+        .before-after-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .before-after-item {
+            flex: 1;
+            text-align: center;
+        }
+
+        .label-before, .label-after {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .label-before {
+            color: #dc2626;
+        }
+
+        .label-after {
+            color: #059669;
+        }
+
+        .visual-mockup {
+            background: #fafbfc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .cluttered-mockup {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border-color: #fecaca;
+        }
+
+        .clean-mockup {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border-color: #bbf7d0;
+        }
+
+        .mockup-banner {
+            background: #fca5a5;
+            color: #7f1d1d;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .mockup-content {
+            background: #e5e7eb;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+        }
+
+        .mockup-content.clean {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .mockup-filter {
+            background: #f3f4f6;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mockup-filter.clean {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .mockup-product {
+            background: #f3f4f6;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mockup-product.clean {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .mockup-step {
+            background: #f3f4f6;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .mockup-step.clean {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .arrow-new {
+            font-size: 1.5rem;
+            color: #6366f1;
+            font-weight: bold;
+            background: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .solution-text {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 500;
+            margin-top: 1.5rem;
+        }
+
+        /* Prototyping Section */
+        .prototyping-intro {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .prototyping-intro p {
+            font-size: 1.1rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .prototype-features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .prototype-feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .prototype-feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .prototype-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .prototype-feature-card h3 {
+            margin-bottom: 1rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .prototype-feature-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Findings Grid */
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .finding-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #6366f1;
+        }
+
+        .finding-card h3 {
+            margin-bottom: 1rem;
+            color: #1e293b;
+        }
+
+        .finding-card p {
+            margin-bottom: 0.5rem;
+            color: #64748b;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Animation classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .bounce-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .bounce-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .flip-in {
+            opacity: 0;
+            transform: rotateY(90deg);
+            transition: all 0.6s ease;
+        }
+
+        .flip-in.visible {
+            opacity: 1;
+            transform: rotateY(0);
+        }
+
+        /* Stagger delays */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+
+        /* Challenge Section */
+        .challenge-intro {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .challenge-intro p {
+            font-size: 1.1rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .challenge-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .challenge-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .challenge-icon-small {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .challenge-item h4 {
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .challenge-item p {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Research Methods Grid */
+        .research-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .method-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .method-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .method-card h3 {
+            margin-bottom: 1rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .method-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Key Issues Grid */
+        .issues-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .issue-category {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+
+        .issue-category h3 {
+            margin-bottom: 1rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .issue-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .issue-category li {
+            padding: 0.5rem 0;
+            color: #64748b;
+            border-bottom: 1px solid #f1f5f9;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .issue-category li::before {
+            content: '•';
+            color: #6366f1;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Key Improvements Grid */
+        .improvements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .improvement-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+
+        .improvement-item h3 {
+            margin-bottom: 1rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .improvement-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .improvement-item li {
+            padding: 0.5rem 0;
+            color: #64748b;
+            border-bottom: 1px solid #f1f5f9;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .improvement-item li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Standards Section Spacing */
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .standard-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+        }
+
+        .standard-category h3 {
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .standard-tags {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .standard-tag {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Results & Impact Purple */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .result-item {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .result-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        }
+
+        .result-item h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .result-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            color: white;
+        }
+
+        /* Timeline Design Process */
+        .process-steps {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #6366f1, #8b5cf6);
+            border-radius: 2px;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 2rem;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            flex: 1;
+        }
+
+        .step-content h3 {
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .step-content p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .demographics-grid,
+            .performance-grid,
+            .findings-grid,
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .challenge-content {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps::before {
+                left: 20px;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                margin-right: 1rem;
+            }
+
+            .research-methods-grid,
+            .issues-grid,
+            .improvements-grid,
+            .improvements-grid-new,
+            .prototype-features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .standards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .improvement-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-links">
+            <a href="index.html#home" class="nav-link">Home</a>
+            <a href="index.html#about" class="nav-link">About</a>
+            <a href="index.html#projects" class="nav-link">Projects</a>
+            <a href="index.html#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Case Study Content -->
+    <section class="case-study-section">
+        <div class="case-study-wrapper">
+            <!-- Header -->
+            <div class="case-study-header">
+                <h1 class="case-study-title">Newegg.com Usability Redesign</h1>
+                <p class="case-study-subtitle">A comprehensive usability study evaluating and redesigning the Newegg website through heuristic evaluation and user testing with 12 participants</p>
+                <div class="case-study-meta">
+                    <span class="meta-item">🔬 Usability Study</span>
+                    <span class="meta-item">UI/UX Design</span>
+                    <span class="meta-item">Data Analysis</span>
+                </div>
+            </div>
+
+            <!-- Project Overview -->
+            <div class="case-study-card bounce-in">
+                <h2>Project Overview</h2>
+                <p>Conducted comprehensive usability testing with 12 participants to identify key pain points in Newegg's e-commerce platform. Through heuristic evaluation and user testing, I created an interactive Figma prototype that significantly improved user experience and task completion efficiency.</p>
+                
+                <div class="prototype-link">
+                    <a href="https://www.figma.com/proto/ljTUscFQ6OuKNVHl1TgNrn/newegg.com-Prototype" target="_blank" class="prototype-button">
+                        View Interactive Prototype
+                    </a>
+                </div>
+                
+                <div class="project-stats">
+                    <div class="stat-item scale-in">
+                        <h3>12</h3>
+                        <p>Participants</p>
+                    </div>
+                    <div class="stat-item scale-in stagger-1">
+                        <h3>65%</h3>
+                        <p>Task 1 Improvement</p>
+                    </div>
+                    <div class="stat-item scale-in stagger-2">
+                        <h3>70%</h3>
+                        <p>Task 2 Improvement</p>
+                    </div>
+                    <div class="stat-item scale-in stagger-3">
+                        <h3>Individual</h3>
+                        <p>Project Type</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Participant Demographics -->
+            <div class="case-study-card slide-in-left">
+                <h2>Participant Demographics</h2>
+                <div class="demographics-grid">
+                    <div class="chart-container fade-in">
+                        <h3>Audience Type</h3>
+                        <canvas id="audienceChart" width="300" height="300"></canvas>
+                    </div>
+                    <div class="chart-container fade-in stagger-1">
+                        <h3>Shopping Frequency</h3>
+                        <canvas id="frequencyChart" width="300" height="300"></canvas>
+                    </div>
+                    <div class="chart-container fade-in stagger-2">
+                        <h3>Gender Distribution</h3>
+                        <canvas id="genderChart" width="300" height="300"></canvas>
+                    </div>
+                    <div class="chart-container fade-in stagger-3">
+                        <h3>Tech Experience Level</h3>
+                        <canvas id="techExperienceChart" width="300" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research & Analysis -->
+            <div class="case-study-card slide-in-right">
+                <h2>Research & Analysis</h2>
+                <div class="research-methods-grid">
+                    <div class="method-card">
+                        <div class="method-icon">🔍</div>
+                        <h3>Heuristic Evaluation</h3>
+                        <p>Conducted systematic evaluation of Newegg's website using established UX heuristics to identify usability issues</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">🧪</div>
+                        <h3>Usability Testing</h3>
+                        <p>Performed comprehensive usability testing to understand user pain points and workflow challenges</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">📊</div>
+                        <h3>Issue Prioritization</h3>
+                        <p>Analyzed findings to prioritize issues based on impact on user experience and business goals</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">🎯</div>
+                        <h3>User Journey Mapping</h3>
+                        <p>Mapped current user journeys to identify friction points and optimization opportunities</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Solution & Process -->
+            <div class="case-study-card">
+                <h2>Design Solution & Process</h2>
+                <div class="solution-approach">
+                    <h3>Redesign Strategy</h3>
+                    <p>Focused on creating a more intuitive and accessible shopping experience through improved navigation, enhanced filtering, and better visual hierarchy.</p>
+                    
+                    <div class="solution-features">
+                        <div class="feature-item">
+                            <h3>🧭 Simplified Navigation</h3>
+                            <p>Redesigned navigation structure with clear categories, improved menu organization, and intuitive breadcrumbs</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>🔍 Enhanced Search & Filtering</h3>
+                            <p>Implemented advanced search with autocomplete, improved filtering options, and better result display</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>🎨 Improved Visual Hierarchy</h3>
+                            <p>Applied consistent typography, better color contrast, and cleaner product listings for improved readability</p>
+                        </div>
+                        <div class="feature-item">
+                            <h3>♿ Accessibility Compliance</h3>
+                            <p>Ensured WCAG compliance with proper keyboard navigation, color contrast, and screen reader support</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Design Process</h3>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Research & Analysis</h3>
+                            <p>Conducted heuristic evaluation and usability testing to identify key issues and user pain points</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Information Architecture</h3>
+                            <p>Redesigned site structure and navigation to improve user flow and product discovery</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Wireframing</h3>
+                            <p>Created low-fidelity wireframes to establish layout structure and user flow improvements</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Visual Design</h3>
+                            <p>Developed high-fidelity designs in Figma with improved visual hierarchy and accessibility</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Prototyping & Testing</h3>
+                            <p>Created interactive prototypes and gathered stakeholder feedback for iterative improvements</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Improvements -->
+            <div class="case-study-card bounce-in">
+                <h2>Design Improvements</h2>
+                <div class="improvements-grid-new">
+                    <div class="improvement-card fade-in">
+                        <div class="improvement-header-new">
+                            <div class="improvement-icon-new">🏠</div>
+                            <div class="improvement-info">
+                                <h3>Homepage Simplification</h3>
+                                <span class="violation-tag">Aesthetic & Minimalist Design</span>
+                            </div>
+                        </div>
+                        <div class="improvement-visual-new">
+                            <div class="before-after-container">
+                                <div class="before-after-item">
+                                    <div class="label-before">Before</div>
+                                    <div class="visual-mockup cluttered-mockup">
+                                        <div class="mockup-banner">PROMO</div>
+                                        <div class="mockup-banner">SALE</div>
+                                        <div class="mockup-content">Grid</div>
+                                        <div class="mockup-content">More</div>
+                                    </div>
+                                </div>
+                                <div class="arrow-new">→</div>
+                                <div class="before-after-item">
+                                    <div class="label-after">After</div>
+                                    <div class="visual-mockup clean-mockup">
+                                        <div class="mockup-content clean">Navigation</div>
+                                        <div class="mockup-content clean">Grid</div>
+                                        <div class="mockup-content clean">CTAs</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="solution-text">
+                            <strong>Solution:</strong> Removed promotional banners, created clear visual hierarchy
+                        </div>
+                    </div>
+
+                    <div class="improvement-card fade-in stagger-1">
+                        <div class="improvement-header-new">
+                            <div class="improvement-icon-new">Search</div>
+                            <div class="improvement-info">
+                                <h3>Filter Panel Redesign</h3>
+                                <span class="violation-tag">User Control & Freedom</span>
+                            </div>
+                        </div>
+                        <div class="improvement-visual-new">
+                            <div class="before-after-container">
+                                <div class="before-after-item">
+                                    <div class="label-before">Before</div>
+                                    <div class="visual-mockup cluttered-mockup">
+                                        <div class="mockup-filter">Brand (50+)</div>
+                                        <div class="mockup-filter">Features (20+)</div>
+                                        <div class="mockup-filter">Specs</div>
+                                        <div class="mockup-filter">More...</div>
+                                    </div>
+                                </div>
+                                <div class="arrow-new">→</div>
+                                <div class="before-after-item">
+                                    <div class="label-after">After</div>
+                                    <div class="visual-mockup clean-mockup">
+                                        <div class="mockup-filter clean">Size</div>
+                                        <div class="mockup-filter clean">Rating</div>
+                                        <div class="mockup-filter clean">Price</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="solution-text">
+                            <strong>Solution:</strong> Reduced to essential filters (Size, Rating, Price)
+                        </div>
+                    </div>
+
+                    <div class="improvement-card fade-in stagger-2">
+                        <div class="improvement-header-new">
+                            <div class="improvement-icon-new">Mobile</div>
+                            <div class="improvement-info">
+                                <h3>Product Page Layout</h3>
+                                <span class="violation-tag">Visibility of System Status</span>
+                            </div>
+                        </div>
+                        <div class="improvement-visual-new">
+                            <div class="before-after-container">
+                                <div class="before-after-item">
+                                    <div class="label-before">Before</div>
+                                    <div class="visual-mockup cluttered-mockup">
+                                        <div class="mockup-product">Dense Text</div>
+                                        <div class="mockup-product">More Text</div>
+                                        <div class="mockup-product">Specs</div>
+                                    </div>
+                                </div>
+                                <div class="arrow-new">→</div>
+                                <div class="before-after-item">
+                                    <div class="label-after">After</div>
+                                    <div class="visual-mockup clean-mockup">
+                                        <div class="mockup-product clean">Image</div>
+                                        <div class="mockup-product clean">Price</div>
+                                        <div class="mockup-product clean">Title</div>
+                                        <div class="mockup-product clean">Rating</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="solution-text">
+                            <strong>Solution:</strong> Emphasized key elements (Image, Price, Title, Rating)
+                        </div>
+                    </div>
+
+                    <div class="improvement-card fade-in stagger-3">
+                        <div class="improvement-header-new">
+                            <div class="improvement-icon-new">🛒</div>
+                            <div class="improvement-info">
+                                <h3>Guest Checkout Streamlining</h3>
+                                <span class="violation-tag">Error Prevention</span>
+                            </div>
+                        </div>
+                        <div class="improvement-visual-new">
+                            <div class="before-after-container">
+                                <div class="before-after-item">
+                                    <div class="label-before">Before</div>
+                                    <div class="visual-mockup cluttered-mockup">
+                                        <div class="mockup-step">Account</div>
+                                        <div class="mockup-step">Shipping</div>
+                                        <div class="mockup-step">Payment</div>
+                                        <div class="mockup-step">Review</div>
+                                        <div class="mockup-step">Confirm</div>
+                                    </div>
+                                </div>
+                                <div class="arrow-new">→</div>
+                                <div class="before-after-item">
+                                    <div class="label-after">After</div>
+                                    <div class="visual-mockup clean-mockup">
+                                        <div class="mockup-step clean">Shipping</div>
+                                        <div class="mockup-step clean">Payment</div>
+                                        <div class="mockup-step clean">Review</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="solution-text">
+                            <strong>Solution:</strong> Created clear 3-step flow (shipping > payment > review)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task Performance Comparison -->
+            <div class="case-study-card slide-in-right">
+                <h2>Task Performance Comparison</h2>
+                <div class="task-descriptions">
+                    <div class="task-description">
+                        <h3>📋 Task 1: Find & Add Laptop</h3>
+                        <p>Participants were asked to navigate to the laptop category, find a specific laptop model, and add it to their cart.</p>
+                    </div>
+                    <div class="task-description">
+                        <h3>🛒 Task 2: Complete Checkout</h3>
+                        <p>Participants were asked to proceed through the entire checkout process as a guest user without creating an account.</p>
+                    </div>
+                </div>
+                <div class="performance-grid">
+                    <div class="chart-container fade-in">
+                        <h3>Average Task Completion Time (seconds)</h3>
+                        <canvas id="completionTimeChart" width="400" height="300"></canvas>
+                    </div>
+                    <div class="chart-container fade-in stagger-1">
+                        <h3>Perceived Difficulty Rating (1-5 scale)</h3>
+                        <canvas id="difficultyChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Performance Metrics Summary -->
+                <div class="metrics-grid">
+                    <div class="metric-card scale-in">
+                        <div class="metric-value" style="font-family: 'Jersey 20', sans-serif;">65%</div>
+                        <div class="metric-label" style="font-family: 'Jersey 20', sans-serif;">Task 1 Speed Improvement</div>
+                    </div>
+                    <div class="metric-card scale-in stagger-1">
+                        <div class="metric-value" style="font-family: 'Jersey 20', sans-serif;">70%</div>
+                        <div class="metric-label" style="font-family: 'Jersey 20', sans-serif;">Task 2 Speed Improvement</div>
+                    </div>
+                    <div class="metric-card scale-in stagger-2">
+                        <div class="metric-value" style="font-family: 'Jersey 20', sans-serif;">53%</div>
+                        <div class="metric-label" style="font-family: 'Jersey 20', sans-serif;">Difficulty Reduction</div>
+                    </div>
+                    <div class="metric-card scale-in stagger-3">
+                        <div class="metric-value" style="font-family: 'Jersey 20', sans-serif;">12</div>
+                        <div class="metric-label" style="font-family: 'Jersey 20', sans-serif;">Total Participants</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Improvements -->
+            <div class="case-study-card">
+                <h2>Key Improvements</h2>
+                <div class="improvements-grid">
+                    <div class="improvement-item">
+                        <h3>🧭 Navigation Redesign</h3>
+                        <ul>
+                            <li>Streamlined category structure</li>
+                            <li>Clear visual hierarchy</li>
+                            <li>Intuitive breadcrumb navigation</li>
+                            <li>Consistent menu patterns</li>
+                        </ul>
+                    </div>
+                    <div class="improvement-item">
+                        <h3>🔍 Enhanced Search Experience</h3>
+                        <ul>
+                            <li>Smart search with autocomplete</li>
+                            <li>Advanced filtering options</li>
+                            <li>Improved result display</li>
+                            <li>Search suggestions and recommendations</li>
+                        </ul>
+                    </div>
+                    <div class="improvement-item">
+                        <h3>🎨 Visual Design Improvements</h3>
+                        <ul>
+                            <li>Consistent typography system</li>
+                            <li>Improved color contrast</li>
+                            <li>Cleaner product listings</li>
+                            <li>Clear call-to-action buttons</li>
+                        </ul>
+                    </div>
+                    <div class="improvement-item">
+                        <h3>♿ Accessibility Enhancements</h3>
+                        <ul>
+                            <li>WCAG 2.1 AA compliance</li>
+                            <li>Keyboard navigation support</li>
+                            <li>Screen reader compatibility</li>
+                            <li>High contrast mode support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Standards & Best Practices -->
+            <div class="case-study-card">
+                <h2>Standards & Best Practices</h2>
+                <div class="standards-grid">
+                    <div class="standard-category">
+                        <h3>♿ Accessibility Standards</h3>
+                        <div class="standard-tags">
+                            <span class="standard-tag" style="font-family: 'Jersey 20', sans-serif;">WCAG 2.1 AA</span>
+                            <span class="standard-tag" style="font-family: 'Jersey 20', sans-serif;">Keyboard Navigation</span>
+                            <span class="standard-tag" style="font-family: 'Jersey 20', sans-serif;">Screen Reader Support</span>
+                        </div>
+                    </div>
+                    <div class="standard-category">
+                        <h3>🎨 UX Heuristics</h3>
+                        <div class="standard-tags">
+                            <span class="standard-tag" style="font-family: 'Jersey 20', sans-serif;">Nielsen's Heuristics</span>
+                            <span class="standard-tag" style="font-family: 'Jersey 20', sans-serif;">Usability Principles</span>
+                            <span class="standard-tag" style="font-family: 'Jersey 20', sans-serif;">User-Centered Design</span>
+                        </div>
+                    </div>
+                    <div class="standard-category">
+                        <h3>📱 Responsive Design</h3>
+                        <div class="standard-tags">
+                            <span class="standard-tag" style="font-family: 'Jersey 20', sans-serif;">Mobile-First</span>
+                            <span class="standard-tag" style="font-family: 'Jersey 20', sans-serif;">Cross-Device</span>
+                            <span class="standard-tag" style="font-family: 'Jersey 20', sans-serif;">Touch-Friendly</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results & Impact -->
+            <div class="case-study-card">
+                <h2>Results & Impact</h2>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <h3>Improved</h3>
+                        <p>User Experience</p>
+                    </div>
+                    <div class="result-item">
+                        <h3>Enhanced</h3>
+                        <p>Accessibility</p>
+                    </div>
+                    <div class="result-item">
+                        <h3>Streamlined</h3>
+                        <p>Navigation</p>
+                    </div>
+                    <div class="result-item">
+                        <h3>Optimized</h3>
+                        <p>Visual Hierarchy</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Developed -->
+            <div class="case-study-card">
+                <h2>Skills Developed</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Research & Analysis</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag" style="font-family: 'Jersey 20', sans-serif;">Heuristic Evaluation</span>
+                            <span class="skill-tag" style="font-family: 'Jersey 20', sans-serif;">Usability Testing</span>
+                            <span class="skill-tag" style="font-family: 'Jersey 20', sans-serif;">User Research</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Design Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag" style="font-family: 'Jersey 20', sans-serif;">Figma</span>
+                            <span class="skill-tag" style="font-family: 'Jersey 20', sans-serif;">Prototyping</span>
+                            <span class="skill-tag" style="font-family: 'Jersey 20', sans-serif;">Wireframing</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Accessibility</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag" style="font-family: 'Jersey 20', sans-serif;">WCAG Compliance</span>
+                            <span class="skill-tag" style="font-family: 'Jersey 20', sans-serif;">Inclusive Design</span>
+                            <span class="skill-tag" style="font-family: 'Jersey 20', sans-serif;">Accessibility Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Projects -->
+            <div class="case-study-actions">
+                <a href="index.html#projects" class="back-button">← Back to Projects</a>
+                <a href="index.html#contact" class="contact-button">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Chart.js configurations and initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            // Color scheme for charts
+            const colors = {
+                primary: '#6366f1',
+                secondary: '#8b5cf6',
+                accent: '#06b6d4',
+                success: '#10b981',
+                warning: '#f59e0b',
+                danger: '#ef4444',
+                light: '#f8fafc',
+                dark: '#1e293b',
+                purple: '#a855f7',
+                blue: '#3b82f6',
+                teal: '#14b8a6'
+            };
+
+            // Audience Type Chart (Pie Chart)
+            const audienceCtx = document.getElementById('audienceChart').getContext('2d');
+            new Chart(audienceCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Frequent Shoppers', 'Tech Buyers', 'Novice Shoppers'],
+                    datasets: [{
+                        data: [3, 3, 6],
+                        backgroundColor: [colors.primary, colors.secondary, colors.accent],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.parsed + ' participants';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Shopping Frequency Chart (Bar Chart)
+            const frequencyCtx = document.getElementById('frequencyChart').getContext('2d');
+            new Chart(frequencyCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Daily', 'Weekly', 'Monthly', 'Rarely'],
+                    datasets: [{
+                        label: 'Participants',
+                        data: [2, 5, 4, 1],
+                        backgroundColor: [colors.success, colors.primary, colors.warning, colors.danger],
+                        borderRadius: 6,
+                        borderSkipped: false,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + ' participants';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            },
+                            grid: {
+                                color: '#f1f5f9'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Gender Distribution Chart (Donut Chart)
+            const genderCtx = document.getElementById('genderChart').getContext('2d');
+            new Chart(genderCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Women', 'Men'],
+                    datasets: [{
+                        data: [7, 5],
+                        backgroundColor: [colors.purple, colors.teal],
+                        borderWidth: 3,
+                        borderColor: '#ffffff',
+                        hoverBorderWidth: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '60%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.parsed + ' participants';
+                                }
+                            }
+                        }
+                    }
+                },
+                plugins: [{
+                    id: 'centerText',
+                    afterDraw: function(chart) {
+                        const ctx = chart.ctx;
+                        const centerX = chart.width / 2;
+                        const centerY = chart.height / 2;
+                        
+                        ctx.save();
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.font = 'bold 18px Arial';
+                        ctx.fillStyle = '#1e293b';
+                        ctx.fillText('12', centerX, centerY - 6);
+                        ctx.font = 'bold 12px Arial';
+                        ctx.fillStyle = '#64748b';
+                        ctx.fillText('Total', centerX, centerY + 8);
+                        ctx.restore();
+                    }
+                }]
+            });
+
+            // Tech Experience Level Chart (Horizontal Bar)
+            const techExperienceCtx = document.getElementById('techExperienceChart').getContext('2d');
+            new Chart(techExperienceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Beginner', 'Intermediate', 'Advanced'],
+                    datasets: [{
+                        label: 'Participants',
+                        data: [4, 6, 2],
+                        backgroundColor: [colors.warning, colors.primary, colors.success],
+                        borderRadius: 6,
+                        borderSkipped: false,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.x + ' participants';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#f1f5f9'
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Task Completion Time Chart
+            const completionCtx = document.getElementById('completionTimeChart').getContext('2d');
+            new Chart(completionCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Task 1', 'Task 2'],
+                    datasets: [{
+                        label: 'Original',
+                        data: [110.03, 288.31],
+                        backgroundColor: '#f87171',
+                        borderRadius: 6,
+                        borderWidth: 0
+                    }, {
+                        label: 'Prototype',
+                        data: [38.51, 87.23],
+                        backgroundColor: '#34d399',
+                        borderRadius: 6,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    if (context.datasetIndex === 0) {
+                                        return 'Original site';
+                                    } else {
+                                        const improvement = context.dataIndex === 0 ? '65% faster' : '70% faster';
+                                        return improvement;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 50
+                            },
+                            grid: {
+                                color: '#f1f5f9'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Time (seconds)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Difficulty Rating Chart
+            const difficultyCtx = document.getElementById('difficultyChart').getContext('2d');
+            new Chart(difficultyCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Task 1', 'Task 2'],
+                    datasets: [{
+                        label: 'Original',
+                        data: [2.50, 2.83],
+                        backgroundColor: '#f87171',
+                        borderRadius: 6,
+                        borderWidth: 0
+                    }, {
+                        label: 'Prototype',
+                        data: [1.33, 1.17],
+                        backgroundColor: '#34d399',
+                        borderRadius: 6,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                afterLabel: function(context) {
+                                    if (context.datasetIndex === 1) {
+                                        const reduction = context.dataIndex === 0 ? 
+                                            Math.round(((2.50 - 1.33) / 2.50) * 100) : 
+                                            Math.round(((2.83 - 1.17) / 2.83) * 100);
+                                        return reduction + '% easier';
+                                    }
+                                    return '';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            max: 5,
+                            ticks: {
+                                stepSize: 1
+                            },
+                            grid: {
+                                color: '#f1f5f9'
+                            },
+                            title: {
+                                display: true,
+                                text: 'Difficulty Rating'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        // Scroll animations for case study page
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .bounce-in, .flip-in, .zoom-rotate, .slide-bounce');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+</html>
+

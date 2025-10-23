@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="./graphics/finnAvatar1.jpg">
+    <!-- need to remove the background up icon image -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <title>Cathy Vo's Portfolio!</title>
+    
+    <!-- Lottie Animation Script -->
+    <script
+        src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js"
+        type="module"
+    ></script>
+</head>
+
+<!-- NOTES: need to work on dynamic/responsive sizing | add animations to landing page | footer? | need nav bar or buttons on landing page -->
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <dotlottie-wc
+                src="https://lottie.host/2c10c6ac-e598-4812-844f-a80b22705812/YTkt6OPyYH.lottie"
+                style="width: 400px;height: 400px"
+                autoplay
+                loop
+            ></dotlottie-wc>
+            <!-- <div class="loading-text-centered">Loading<br> Pixels...</div> -->
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="nav-links">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+    <div class="content-wrapper">
+    <div class="main-avatar-image">
+        <img src="./graphics/avatarGraphic.PNG" alt="Cathy's Avatar" class="avatar">
+    </div>
+    
+    <div class="text-content">
+        <div class="intro-section bounce-in">
+                <img src="./graphics/hiImCathy.png" alt="Hi, I'm Cathy!" class="title-image">
+        </div>
+        
+        <div class="main-body-text flip-in stagger-1">
+            <p>Turning ideas into seamless experiences with code and creativity. Studying Informatics, creating designs, and hunting for internships.</p>
+        </div>
+        
+        <div class="main-bottom-text zoom-rotate stagger-2">
+            <h2 class="typing-text">Let's create together!</h2>
+        </div>
+    </div>
+</div>
+
+    <div class="main-finnick-image" id="finnick-container">
+        <img src="./graphics/finnAvatar1.jpg" alt="Finnick's Avatar" class="finnick" id="finnick-cat">
+        <div class="cat-tooltip" id="cat-tooltip">
+            <div class="thought-bubble">
+                <div class="bubble-text">Hi, I'm Finnick!</div>
+                <div class="bubble-tail"></div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="projects-page-wrapper">
+            <div class="projects-title-container bounce-in">
+                <h1 class="projects-main-heading">My Projects</h1>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1
+                <div class="project-card slide-in-left">
+                    <div class="project-image">
+                        <img src="./graphics/atomsImage.png" alt="ATOMS.TECH Project" class="project-image-img">
+                    </div>
+                    <div class="project-content">
+                        <h3>Interactive Systems Engineering Platform (ATOMS.TECH)</h3>
+                        <p>AI-powered assistant for systems engineering with interactive data visualization tools and custom editable data grids.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <a href="atoms-case-study.html" class="project-button">View Case Study</a>
+                    </div>
+                </div> -->
+
+                <!-- Project 2 -->
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <div class="project-placeholder">🍔</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Usability Testing on Food Delivery Apps</h3>
+                        <p>Comprehensive UX research study analyzing DoorDash, Uber Eats, and GrubHub to identify ordering flow issues and improve user satisfaction.</p>
+                        <div class="project-tags">
+                            <span class="tag">UX Research</span>
+                            <span class="tag">Usability Testing</span>
+                            <span class="tag">User Testing</span>
+                        </div>
+                        <a href="food-delivery-case-study.html" class="project-button">View Case Study</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card slide-in-right">
+                    <div class="project-image">
+                        <img src="./graphics/neweggImage.png" alt="Newegg.com Redesign Project" class="project-image-img">
+                    </div>
+                    <div class="project-content">
+                        <h3>Newegg Website UX Redesign</h3>
+                        <p>Comprehensive UX redesign of Newegg's e-commerce site focusing on navigation, filtering, and accessibility improvements.</p>
+                        <div class="project-tags">
+                            <span class="tag">UI/UX Design</span>
+                            <span class="tag">Figma</span>
+                            <span class="tag">Accessibility</span>
+                        </div>
+                        <a href="newegg-case-study.html" class="project-button">View Case Study</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 - Commented Out -->
+                <!--
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder">🚀</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Startup Dashboard</h3>
+                        <p>A data visualization dashboard for startup analytics with clean, modern interface design.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Data Viz</span>
+                            <span class="tag">Dashboard</span>
+                        </div>
+                        <a href="dashboard-case-study.html" class="project-button">View Case Study</a>
+                    </div>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-page-wrapper">
+            <!-- About Page Title -->
+            <div class="about-title-container bounce-in">
+                <h1 class="about-main-heading">About Me :D</h1>
+            </div>
+            
+            <div class="about-content-grid">
+                <!-- Education Card -->
+                <div class="about-card slide-bounce">
+                    <h3>Education</h3>
+                    <p>I'm currently in my fourth year at <span class="highlight">Arizona State University</span> pursuing my <span class="highlight">Bachelor's of Science</span> in <span class="highlight">Informatics</span> with an emphasis in Digital Culture!</p>
+                    <p>I'm excited to be graduating in <span class="graduation-date">December 2025</span> and can't wait to apply everything I've learned!</p>
+                    <p>In the meantime, I am maintaining a strong academic focus while building practical skills through internships and projects!</p>
+                </div>
+
+                <!-- Work Experience Card -->
+                <div class="about-card slide-bounce stagger-1">
+                    <h3> Work Experience</h3>
+                    <p>I had an amazing experience as a <span class="highlight">Frontend Developer Intern</span> at <span class="highlight">The GBCS Group</span> from May 2025 to July 2025!</p>
+                    <p>During my internship, I developed full-stack applications using <span class="highlight">React.js</span>, implemented high-fidelity prototypes into existing systems, and conducted peer code reviews. I performed regression testing and optimized interfaces based on client feedback while maintaining project timelines with <span class="highlight">Trello and GitHub</span>.</p>
+                </div>
+            </div>
+
+            <!-- Technical Skills Grid -->
+            <div class="skills-grid">
+                <div class="skill-category flip-in">
+                    <h4>Programming Languages</h4>
+                    <div class="tech-logos">
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" title="Java">
+                            <span>Java</span>
+                        </div>
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python">
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" title="C">
+                            <span>C</span>
+                        </div>
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" title="C++">
+                            <span>C++</span>
+                        </div>
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" title="SQL">
+                            <span>SQL</span>
+                        </div>
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prolog/prolog-original.svg" alt="Prolog" title="Prolog">
+                            <span>Prolog</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category zoom-rotate stagger-1">
+                    <h4>Web Development</h4>
+                    <div class="tech-logos">
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript">
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" title="HTML">
+                            <span>HTML</span>
+                        </div>
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" title="CSS">
+                            <span>CSS</span>
+                        </div>
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" title="Node.js">
+                            <span>Node.js</span>
+                        </div>
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" title="React">
+                            <span>React</span>
+                        </div>
+                        <div class="tech-logo">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" title="TypeScript">
+                            <span>TypeScript</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category certifications-card bounce-in stagger-2">
+                    <h4>Certifications</h4>
+                    <div class="certifications-list">
+                        <div class="certification-item">
+                            <div class="cert-icon">📜</div>
+                            <div class="cert-details">
+                                <h5>Responsive Web Design</h5>
+                                <p><span class="highlight">freeCodeCamp</span></p>
+                                <p class="cert-date">December 2024</p>
+                            </div>
+                        </div>
+                        <div class="certification-item">
+                            <div class="cert-icon">🎨</div>
+                            <div class="cert-details">
+                                <h5>Google UX Design Professional Certificate</h5>
+                                <p><span class="highlight">Coursera</span></p>
+                                <p class="cert-date">October 2025</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Resume Button -->
+            <div class="resume-section">
+                <a href="graphics/Cathy Vo Resume.docx" class="resume-button" target="_blank">View My Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-page-wrapper">
+            <!-- Main Heading -->
+            <div class="contact-title-container bounce-in">
+                <h1 class="contact-main-heading">I'm Just A Message Away!</h1>
+                <p class="contact-subtitle">Let's connect and create something amazing together</p>
+            </div>
+            
+            <!-- Contact Content Grid -->
+            <div class="contact-content-grid">
+                <!-- Contact Info Card -->
+                <div class="contact-info-card slide-in-left">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:cathyvo@asu.edu">cathyvo@asu.edu</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>LinkedIn</h4>
+                            <p><a href="https://www.linkedin.com/in/cathyyvo/" target="_blank">Connect with me</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>GitHub</h4>
+                            <p><a href="https://github.com/cathyvocodes" target="_blank">Check out my code</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Handshake</h4>
+                            <p><a href="https://app.joinhandshake.com/profile/cathyvo" target="_blank">View my student profile</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Resume</h4>
+                            <p><a href="resume.pdf" target="_blank">Download my resume</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Card -->
+                <div class="contact-form-card slide-in-right">
+                    <h3>Send a Message</h3>
+                    <form class="contact-form" action="submit.html" method="GET">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" placeholder="Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" placeholder="Tell me about your idea or just say hello!" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer
+            <footer class="contact-footer">
+                <div class="footer-content">
+                    <div class="footer-text">
+                        <p>Coded with ☕ and lo-fi beats by Cathy Vo © 2025</p>
+                    </div>
+                </div>
+            </footer> -->
+        </div>
+    </section>
+
+    <script>
+        // Cat click functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const finnickCat = document.getElementById('finnick-cat');
+            const tooltip = document.getElementById('cat-tooltip');
+            
+            if (finnickCat && tooltip) {
+                finnickCat.addEventListener('click', function() {
+                    console.log('Finnick clicked!'); // Debug log
+                    tooltip.style.opacity = '1';
+                    tooltip.style.visibility = 'visible';
+                    
+                    // Hide the tooltip after 3 seconds
+                    setTimeout(function() {
+                        tooltip.style.opacity = '0';
+                        tooltip.style.visibility = 'hidden';
+                    }, 3000);
+                });
+            }
+        });
+
+
+        // Track scroll direction for bidirectional animations
+        let lastScrollY = window.scrollY;
+        let scrollDirection = 'down';
+
+        // Scroll animations with bidirectional behavior
+        const observerOptions = {
+            threshold: 0.2, // Trigger when 20% of element is visible
+            rootMargin: '0px 0px -10px 0px' // Start animation slightly before element is fully in view
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const rect = entry.target.getBoundingClientRect();
+                const isScrollingDown = scrollDirection === 'down';
+                
+                if (entry.isIntersecting && isScrollingDown) {
+                    // Scrolling down - animate in
+                    const delay = Math.min(rect.top / window.innerHeight * 150, 200);
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                        entry.target.classList.remove('hidden');
+                    }, delay);
+                } else if (!entry.isIntersecting && !isScrollingDown) {
+                    // Scrolling up - animate out
+                    entry.target.classList.remove('visible');
+                    entry.target.classList.add('hidden');
+                }
+            });
+        }, observerOptions);
+
+        // Track scroll direction
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
+            lastScrollY = currentScrollY;
+        });
+
+        // Observe all elements with animation classes
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add loading class to prevent scrolling during loading
+            document.body.classList.add('loading');
+            
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .bounce-in, .flip-in, .zoom-rotate, .slide-bounce');
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+
+        // Check if user is coming from a case study page (has referrer and it's not the same domain)
+        const isFromCaseStudy = document.referrer && 
+            document.referrer.includes(window.location.origin) && 
+            (document.referrer.includes('case-study') || document.referrer.includes('newegg') || document.referrer.includes('atoms'));
+        
+        if (isFromCaseStudy) {
+            // Skip loading animation when coming from case study pages
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.style.display = 'none';
+            document.body.classList.remove('loading');
+            document.body.classList.add('loaded');
+            
+            // Trigger landing page animations immediately
+            setTimeout(() => {
+                const landingElements = document.querySelectorAll('.bounce-in, .flip-in, .zoom-rotate');
+                landingElements.forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 100);
+        } else {
+            // Show loading animation for first visits and direct navigation
+            setTimeout(() => {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    // Ensure page starts at the top
+                    window.scrollTo(0, 0);
+                    document.documentElement.scrollTop = 0;
+                    document.body.scrollTop = 0;
+                    
+                    // Transition to loaded state for smooth content reveal
+                    document.body.classList.remove('loading');
+                    document.body.classList.add('loaded');
+                    
+                    // Trigger landing page animations after content is visible
+                    setTimeout(() => {
+                        const landingElements = document.querySelectorAll('.bounce-in, .flip-in, .zoom-rotate');
+                        landingElements.forEach(el => {
+                            el.classList.add('visible');
+                        });
+                    }, 200);
+                }, 500);
+            }, 3000);
+        }
+
+            // Make contact cards clickable
+            const contactItems = document.querySelectorAll('.contact-info-item');
+            contactItems.forEach(item => {
+                const link = item.querySelector('a');
+                if (link) {
+                    item.style.cursor = 'pointer';
+                    item.addEventListener('click', () => {
+                        window.open(link.href, link.target || '_self');
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
